@@ -11,7 +11,7 @@ Script Purpose:
 ================================================================================
 */
 
-IF OBJECT_ID('bronze.crm_cust_info','U') IS NOT NULL 
+IF OBJECT_ID('bronze.crm_cust_info','U') IS NOT NULL --T-SQL script to check if table already exists and drop if so. U- stands for user-defined tables
     DROP TABLE bronze.crm_cust_info;
 GO
 
