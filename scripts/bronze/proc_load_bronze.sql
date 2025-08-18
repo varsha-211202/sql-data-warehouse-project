@@ -20,6 +20,8 @@ Usage Example:
 
 ---1.CRM TABLES
 
+--The Load method we will be using is full load: Truncate and insert.
+
 CREATE OR ALTER PROCEDURE bronze.LOAD_BRONZE AS --we will need to insert the data everyday in datawarehouse. so write it in a stored procedure.
 BEGIN
     BEGIN TRY -- error handling
@@ -60,11 +62,9 @@ BEGIN
         --Tablock: Locks the table(during) when the bulk insert happens.
         --Check the data quality and correctness
 
-        SELECT * FROM bronze.crm_cust_info;
-        SELECT COUNT(*) FROM bronze.crm_cust_info; -- check in csv files how many rows we've got.
+        --SELECT * FROM bronze.crm_cust_info;
+        --SELECT COUNT(*) FROM bronze.crm_cust_info; -- check in csv files how many rows we've got.
 
-        --when this query is executed again, it loads the same set of data again which is wrong.
-        --The Load method we will be using is full load: Truncate and insert.
 
         SET @start_time = GETDATE();
 
