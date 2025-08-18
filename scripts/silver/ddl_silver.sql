@@ -21,7 +21,7 @@ create table silver.crm_cust_info (
 	cst_marital_status nvarchar(50),
 	cst_gndr           nvarchar(50),
 	cst_create_date    date,
-	dwh_create_date    datetime2 default getdate()
+	dwh_create_date    datetime2 default getdate() --user-defined metadata column explicitly for Silver Layer only
 );
 
 IF OBJECT_ID ('silver.crm_prd_info','U') IS NOT NULL 
