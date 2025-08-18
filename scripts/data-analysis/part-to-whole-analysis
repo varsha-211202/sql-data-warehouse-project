@@ -1,0 +1,28 @@
+/*
+================================================================================
+Part-to-Whole Analysis
+================================================================================
+
+Script Purpose:
+    This script analyzes which product category contributes the most to overall sales.
+    It performs the following checks:
+    - Computes total sales per category.
+    - Calculates each category's contribution as a percentage of total sales.
+================================================================================
+*/
+
+-- Part-to-Whole Analysis: Category contribution to overall sales
+WITH best_category AS (
+SELECT p.category,
+       SUM(f.sales_amount) AS total_sales
+FROM gold.fact_sales f
+LEFT JOIN gold.dim_products p 
+       ON f.product_key = p.product_key
+GROUP BY p.category
+)
+SELECT category,
+       total_sales,
+       SUM(total_sales) OVER () AS overall_sum,
+       ROUND((CAST(total_sales AS FLOAT) / CAST(SUM(total_sales) OVER () AS FLOAT)) * 100, 2) AS overall_percent
+FROM best_category
+ORDER BY total_sales DESC;
