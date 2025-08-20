@@ -1,6 +1,5 @@
 # sql-data-warehouse-project
 Building a data warehouse using ETL process, data modelling and data analyzing.
-Here’s a paraphrased version of the content from the image titled **"Data Warehouse and Analytics Project"**:
 
 ---
 
